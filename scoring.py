@@ -1,7 +1,7 @@
 #verif entre le code et le guess et renvoi le nbr de bons et le nbr de mal placés
 import config
 
-def scoring(guess, code):
+def score(guess, code):
     bon = 0
     mal_place = 0
 

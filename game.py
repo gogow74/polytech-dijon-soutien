@@ -1,5 +1,6 @@
 import config
 import random
+import scoring
 
 def code_creation():
     code = []
@@ -31,3 +32,21 @@ def saisie_code():
                 print("Saisie invalide")
         saisie.append(x)
     return saisie
+
+def game_loop():
+    #creation code + affichage colors
+    code = code_creation()
+    afficher_couleurs()
+    win = False
+
+    #boucle de nb essaies + sortie en cas de victoire ou defaite
+    for i in range(config.tries_allowed):
+        print(f"Entrez votre code, il vous reste {config.tries_allowed - i} essaies")
+        essaie = saisie_code()
+        bon, mal_place = scoring.score(essaie, code)
+        print(f"Vous avez {bon} bon et {mal_place} mal place")
+        if bon == 4:
+            win = True
+            break
+
+    return win 
